@@ -8,30 +8,15 @@ odoo.define('pos_product_brand.brand', function(require){
             var self = this;
             models.load_fields('product.product', 'brand');
             _super_product.initialize.apply(this, arguments);
+            console.log("this",this)
         }
     });
     models.Orderline = models.Orderline.extend({
         export_for_printing: function(){
             var line = _super_orderline.export_for_printing.apply(this, arguments);
             line.brand = this.get_product().brand;
+            console.log("line",line)
             return line;
         }
     });
 });
-
-
-//odoo.define('pos_product_brand.brand', function (require) {
-//    "use strict";
-//     var models = require('point_of_sale.models');
-//
-//     console.log(1)
-//     models.load_fields('product.product','brand');
-//     var _super_orderline = models.Orderline.prototype;
-//     models.Orderline = models.Orderline.extend({
-//        export_for_printing: function() {
-//            var line = _super_orderline.export_for_printing.apply(this,arguments)
-//            line.brand = this.get_product().brand;
-//            return line;
-//        },
-//     });
-//});
