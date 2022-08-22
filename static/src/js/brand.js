@@ -8,7 +8,6 @@ odoo.define('pos_product_brand.brand', function(require){
             var self = this;
             models.load_fields('product.product', 'brand');
             _super_product.initialize.apply(this, arguments);
-            console.log("this",this)
         }
     });
     models.Orderline = models.Orderline.extend({
